@@ -11,19 +11,19 @@ if (html.id === 'shopping-page') {
   //cycle through all elements in that array; create event listener for each
   for (var i =0; i < addItemButtons.length; i++){
     var button = addItemButtons[i];
-	button.addEventListener('click', addQuantity);
+	  button.addEventListener('click', addQuantity);
   }
   //repeat of array creation/subsequent event listener creation; this time for removing items
   var removeItemButtons = document.getElementsByClassName('remove-button');
   for (var i=0; i < removeItemButtons.length; i++){
     var button = removeItemButtons[i];
-	button.addEventListener('click', removeQuantity);
+  button.addEventListener('click', removeQuantity);
   }
 
   //event listeners for if the incrementers on the number field are used rather than buttons
   for (var i =0; i < quantityFields.length; i++){
     var field = quantityFields[i];
-	field.addEventListener('change', updatePrice);
+  	field.addEventListener('change', updatePrice);
   }
 }
 //-------------------------Event Listeners for Interpage Navigation---------------------
@@ -87,12 +87,16 @@ function updatePrice(event){
 function validateInputs(event){
   if(html.id==='shopping-page'){
 	//Convert items to array, pass into localStorage
-	var itemsBought = [quantityFields[0].value, quantityFields[1].value, quantityFields[2].value, quantityFields[3].value];
-	localStorage.setItem("itemsBought", JSON.stringify(itemsBought));
+	  var itemsBought = [quantityFields[0].value, quantityFields[1].value, quantityFields[2].value, quantityFields[3].value];
+	  localStorage.setItem('itemsBought', JSON.stringify(itemsBought));
     window.location="shipping-information/index.html";
   }
   if(html.id==='shipping-information-page'){
     window.location="../payment-information/index.html";
+    var items = window.localStorage.getItem('itemsBought')
+    items.split(",")
+    alert(items[0]);
+    //document.getElementById('item1').value =
   }
   if(html.id==='payment-information-page'){
     window.location="../confirmation/index.html";
